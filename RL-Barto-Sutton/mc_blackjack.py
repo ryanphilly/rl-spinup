@@ -101,6 +101,8 @@ def mc_control_weighted_importanace_sampling(env=BlackjackEnv(),
       state_action_values[state][action] += (weights / cummulative_weight_sums[state][action]) * \
         (returns - state_action_values[state][action])
       if action == target_policy(state)[0]:
+        # I S Ratio: target(a|s) / behavior(a|s)
+        # target greedy policy will always be 1
         weights *= (1.0 / behavior_policy(state)[1][action])
 
   return state_action_values, target_policy
