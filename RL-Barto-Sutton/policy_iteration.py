@@ -110,9 +110,9 @@ def get_path_starting_from(starting_state, optimal_policy):
   return path
 
 if __name__ == '__main__':
-  c = GridWorldPolicy(shape=(15,15), terminal_states=[[0,0], [14,14]])
+  c = GridWorldPolicy(shape=(4,4), terminal_states=[[0,0], [3,3]])
   policy , epochs = c.compute_optimal_policy()
-  print(get_path_starting_from([7,7], policy))
+  print(policy)
 
       
 
