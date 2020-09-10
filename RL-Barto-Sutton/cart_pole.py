@@ -1,15 +1,14 @@
 import gym
 import numpy as np
+from tensorflow.keras import layers, Model
 
-env = gym.make('CartPole-v0')
+class DeepQAproximator(Model):
+  def __init__(self, observation_shape, num_actions, discount_factor=1e0, epsilon=1e-1, *args, **kwargs):
+    super(QAproximator, self).__init__()
+    self.dense_relu1 = layers.Dense(32, input_shape=observation_shape, activation=tf.nn.relu)
+    self.dense_relu2 = layers.Dense(32, activation=tf.nn.relu)
+    self.dense_action = layers.Dense(num_actions, activation=tf.nn.linear)
+    self.compile(**kwargs)
 
-for ep in range(20):
-  oberservation = env.reset()
-  for _ in range(1000):
-    env.render()
-    print(oberservation)
-    action = env.action_space.sample()
-    oberservation, reward, done, info = env.step(action) # take a random action
-    if done: break
-
-env.close()
+  def call(self, observation, training=False):
+    pass
