@@ -1,7 +1,6 @@
 from collections import defaultdict
 import numpy as np
-
-from blackjack import BlackjackEnv
+import gym
 
 
 def run_full_episode(env, policy):
